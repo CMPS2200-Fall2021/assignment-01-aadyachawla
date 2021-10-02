@@ -12,18 +12,19 @@ def foo(x):
     return ra+rb
 
 def longest_run(mylist, key):
-    maxlength = 0
+    count = 0
+    prev = 0
+    iend = 0
 
     for i in mylist:
-        current_num = i
-        current_length = 1
-
-        while current_num + 1 in mylist:
-            current_num += 1
-            current_length += 1
-
-        maxlength = max(maxlength, current_length)
-    return maxlength
+        if i == key:
+            count += 1
+        else:
+            if count > prev:
+                prev = count
+                iend = i
+            count = 0
+    return prev
                 
 
 class Result:
